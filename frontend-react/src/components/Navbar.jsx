@@ -9,23 +9,23 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-between text-sm py-4 mb-5 border-b border-b-gray-400">
-      <img className="w-44 cursor-pointer" src={assets.logo} alt="" />
+      <img className="w-44 cursor-pointer h-11" src={assets.logo} alt="" />
       <ul className="hidden md:flex items-start gap-5 font-medium">
-        <NavLink to="/">
+        <NavLink to="/" className="relative">
           <li className="py-1">HOME</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
+          <hr className="absolute bottom-0 right-0 left-0 border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
-        <NavLink to="/doctors">
+        <NavLink to="/doctors" className="relative">
           <li className="py-1">ALL DOCTORS</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
+          <hr className="absolute bottom-o right-0 left-0 border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
-        <NavLink to="/about">
+        <NavLink to="/about" className="relative">
           <li className="py-1">ABOUT</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
+          <hr className="absolute bottom-0 right-0 left-0 border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
-        <NavLink to="/contact">
+        <NavLink to="/contact" className="relative">
           <li className="py-1">CONTACT</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
+          <hr className="absolute bottom-0 right-0 left-0 border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
       </ul>
       <div className="flex items-center gap-4">
