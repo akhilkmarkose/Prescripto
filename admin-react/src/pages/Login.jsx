@@ -14,7 +14,6 @@ const Login = () => {
     event.preventDefault();
     try {
       if (state === "Admin") {
-        console.log(state);
         const { data } = await axios.post(backendUrl + "/api/admin/login", {
           email,
           password,
@@ -46,6 +45,7 @@ const Login = () => {
             className="border border-[#ADADAD] rounded w-full p-2 mt-1"
             type="email"
             required
+            autoComplete="email"
           />
         </div>
         <div className="w-full">
@@ -56,6 +56,7 @@ const Login = () => {
             className="border border-[#ADADAD] rounded w-full p-2 mt-1"
             type="password"
             required
+            autoComplete="password"
           />
         </div>
         <button className="bg-primary text-white w-full py-2 rounded-md text-base">
