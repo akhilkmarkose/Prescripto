@@ -8,6 +8,7 @@ import {
   updateProfile,
   bookAppointment,
   listAppointment,
+  cancelAppointment,
 } from "../controllers/userController.js";
 
 const userRouter = express.Router();
@@ -24,5 +25,6 @@ userRouter.post(
 );
 userRouter.post("/book-appointment", authUser, bookAppointment);
 userRouter.get("/appointments", authUser, listAppointment);
+userRouter.post("/cancel-appointment", authUser, cancelAppointment);
 
 export default userRouter;
