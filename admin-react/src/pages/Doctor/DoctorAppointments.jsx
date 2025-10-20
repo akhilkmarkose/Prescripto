@@ -4,7 +4,13 @@ import { AppContext } from "../../context/AppContext";
 import { assets } from "../../assets/assets";
 
 const DoctorAppointments = () => {
-  const { dToken, appointments, getAppointments } = useContext(DoctorContext);
+  const {
+    dToken,
+    appointments,
+    getAppointments,
+    cancelAppointment,
+    completeAppointment,
+  } = useContext(DoctorContext);
   const { slotDateFormat, calculateAge, currency } = useContext(AppContext);
 
   useEffect(() => {
@@ -61,13 +67,13 @@ const DoctorAppointments = () => {
             ) : (
               <div className="flex">
                 <img
-                  onClick={() => {}}
+                  onClick={() => cancelAppointment(item._id)}
                   className="w-10 cursor-pointer"
                   src={assets.cancel_icon}
                   alt=""
                 />
                 <img
-                  onClick={() => {}}
+                  onClick={() => completeAppointment(item._id)}
                   className="w-10 cursor-pointer"
                   src={assets.tick_icon}
                   alt=""
