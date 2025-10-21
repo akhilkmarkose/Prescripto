@@ -11,6 +11,7 @@ const DoctorContextProvider = (props) => {
     localStorage.getItem("dToken") ? localStorage.getItem("dToken") : ""
   );
   const [appointments, setAppointments] = useState([]);
+  const [dashData, setDashData] = useState(false);
 
   // Getting Doctor appointment data from Database using API
   const getAppointments = async () => {
@@ -43,6 +44,7 @@ const DoctorContextProvider = (props) => {
       if (data.success) {
         toast.success(data.message);
         getAppointments();
+        getDashData();
       } else {
         toast.error(data.message);
       }
@@ -64,12 +66,31 @@ const DoctorContextProvider = (props) => {
       if (data.success) {
         toast.success(data.message);
         getAppointments();
+        getDashData();
       } else {
         toast.error(data.message);
       }
     } catch (error) {
       toast.error(error.message);
       console.log(error);
+    }
+  };
+
+  // Getting Doctor dashboard data using API
+  const getDashData = async () => {
+    try {
+      const { data } = await axios.get(backendUrl + "/api/doctor/dashboard", {
+        headers: { dToken },
+      });
+
+      if (data.success) {
+        setDashData(data.dashData);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
     }
   };
 
@@ -81,6 +102,8 @@ const DoctorContextProvider = (props) => {
     getAppointments,
     cancelAppointment,
     completeAppointment,
+    dashData,
+    getDashData,
   };
 
   return (
