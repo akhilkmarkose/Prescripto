@@ -16,7 +16,10 @@ const TopDoctors = () => {
           <div
             className="box-border border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
             key={index}
-            onClick={() => {navigate(`/appointments/${item._id}`); scrollTo(0, 0);}}
+            onClick={() => {
+              navigate(`/appointments/${item._id}`);
+              scrollTo(0, 0);
+            }}
           >
             <img className="bg-blue-50" src={item.image} alt="" />
             <div className="p-4 flex flex-col w-full items-start">
@@ -34,7 +37,10 @@ const TopDoctors = () => {
           </div>
         ))}
       </div>
-      <button onClick={() => navigate('/doctors')} className="text-gray-600 bg-blue-50 px-12 py-3 rounded-full mt-10">
+      <button
+        onClick={() => navigate("/doctors")}
+        className="text-gray-600 bg-blue-50 px-12 py-3 rounded-full mt-10"
+      >
         more
       </button>
     </div>
