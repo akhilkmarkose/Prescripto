@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
-import { assets } from "../assets/assets";
 import { AdminContext } from "../context/AdminContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { DoctorContext } from "../context/DoctorContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [state, setState] = useState("Admin");
@@ -11,6 +11,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const { setAToken, backendUrl } = useContext(AdminContext);
   const { setDToken } = useContext(DoctorContext);
+
+  const navigate = useNavigate();
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
@@ -23,6 +25,7 @@ const Login = () => {
         if (data.success) {
           localStorage.setItem("aToken", data.token);
           setAToken(data.token);
+          navigate("/admin-dashboard");
         } else {
           toast.error(data.message);
         }
@@ -34,7 +37,7 @@ const Login = () => {
         if (data.success) {
           setDToken(data.token);
           localStorage.setItem("dToken", data.token);
-          console.log(data);
+          navigate("/doctor-dashboard");
         } else {
           toast.error(data.message);
         }
@@ -78,7 +81,7 @@ const Login = () => {
           <p>
             Doctor Login?{" "}
             <span
-              className="text-primary undeline cursor-pointer"
+              className="text-primary underline cursor-pointer"
               onClick={() => setState("Doctor")}
             >
               Click here
@@ -88,7 +91,7 @@ const Login = () => {
           <p>
             Admin Login?{" "}
             <span
-              className="text-primary undeline cursor-pointer"
+              className="text-primary underline cursor-pointer"
               onClick={() => setState("Admin")}
             >
               Click here
